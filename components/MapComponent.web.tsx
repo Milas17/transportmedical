@@ -2,6 +2,9 @@ import React, { useEffect, useRef } from 'react';
 import { StyleSheet } from 'react-native';
 import { Loader } from '@googlemaps/js-api-loader';
 
+// Declare the Google Maps global object for TypeScript
+declare const google: any;
+
 const GOOGLE_MAPS_API_KEY = 'AIzaSyB629Z4YAelSDYLiW67-VX3DBqWTICSuto';
 
 type MapComponentProps = {
@@ -11,14 +14,15 @@ type MapComponentProps = {
   destinationLocation?: string;
 };
 
-export function MapComponent({ 
-  userLocation, 
-  driverLocation, 
-  pickupLocation, 
-  destinationLocation 
+export function MapComponent({
+  userLocation,
+  driverLocation,
+  pickupLocation,
+  destinationLocation
 }: MapComponentProps) {
   const mapRef = useRef<HTMLDivElement>(null);
-  const mapInstanceRef = useRef<google.maps.Map | null>(null);
+  // Use a loose type for the map instance since the Google Maps types are loaded at runtime
+  const mapInstanceRef = useRef<any>(null);
 
   useEffect(() => {
     const loader = new Loader({

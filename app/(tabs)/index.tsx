@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, ScrollView, Platform, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Ambulance, Calendar, Navigation, MapPin, Clock, ArrowRight, Plus, Star } from 'lucide-react-native';
+import { Ambulance, Calendar, Navigation, MapPin, Clock, ArrowRight, Plus, Star, User } from 'lucide-react-native';
 import { StatusBar } from 'expo-status-bar';
 import { useRouter } from 'expo-router';
 
@@ -41,6 +41,15 @@ export default function HomeScreen() {
       color: '#20C997',
       bgColor: '#E8F5F0',
       action: () => router.push('/track')
+    },
+    {
+      id: 'profile',
+      title: 'Profil',
+      subtitle: 'Infos patient',
+      icon: User,
+      color: '#6F42C1',
+      bgColor: '#F0E9FF',
+      action: () => router.push('/patient-info')
     }
   ];
 
